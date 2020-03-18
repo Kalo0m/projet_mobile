@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PageAcceuil">
+
+    <TextView
+        android:id="@+id/Recette"
+        android:layout_width="377dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="17dp"
+        android:fontFamily="sans-serif"
+        android:text="Recette"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/nomRecette"
+        android:layout_width="370dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/TextNomRecette"
+        app:layout_constraintTop_toBottomOf="@+id/TextNomRecette" />
+
+    <TextView
+        android:id="@+id/TextNomRecette"
+        android:layout_width="213dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="98dp"
+        android:text="Nom de la recette recehrché:"
+        android:textAlignment="textStart"
+        app:layout_constraintStart_toStartOf="@+id/Recette"
+        app:layout_constraintTop_toBottomOf="@+id/Recette" />
+
+    <TextView
+        android:id="@+id/TextGenreRecette"
+        android:layout_width="210dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="64dp"
+        android:text="Genre de la recette:"
+        app:layout_constraintStart_toStartOf="@+id/nomRecette"
+        app:layout_constraintTop_toBottomOf="@+id/nomRecette" />
+
+    <Spinner
+        android:id="@+id/spinnerGenreRecette"
+        android:layout_width="370dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/TextGenreRecette"
+        app:layout_constraintTop_toBottomOf="@+id/TextGenreRecette" />
+
+    <TextView
+        android:id="@+id/TextNombrePersonne"
+        android:layout_width="212dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="64dp"
+        android:text="Nombre de personnes conviées:"
+        app:layout_constraintStart_toStartOf="@+id/spinnerGenreRecette"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGenreRecette" />
+
+    <SeekBar
+        android:id="@+id/seekBarNombrePersonne"
+        style="@android:style/Widget.DeviceDefault.SeekBar"
+        android:layout_width="368dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:progressTint="#E91E63"
+        app:layout_constraintStart_toStartOf="@+id/TextNombrePersonne"
+        app:layout_constraintTop_toBottomOf="@+id/TextNombrePersonne" />
+
+    <Button
+        android:id="@+id/buttonRechcercher"
+        android:layout_width="368dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="90dp"
+        android:background="#2196F3"
+        android:text="Rechercher !"
+        android:textAlignment="center"
+        android:textColor="#FFC107"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarNombrePersonne" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
