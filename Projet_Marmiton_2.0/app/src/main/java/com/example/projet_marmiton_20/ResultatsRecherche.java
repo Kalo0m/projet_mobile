@@ -46,17 +46,17 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class ResultatsRecherche extends AppCompatActivity {
 
     private static final String TAG = "APP";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        getSongList(n);
+        setContentView(R.layout.activity_resultats_recherche);
+        //getSongList(n);
     }
-
+    /*
     public void getSongList(String n){
         RequestQueue queue = VolleySingleton.getInstance(this).getRequestQueue();
         ApiInterface request = new ApiInterface(queue,n);
@@ -73,20 +73,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-}
 
-
-
-
-
-
-
-
-
-
-
-
-
+     */
 
 
     class MyClassAdapter extends ArrayAdapter<Recette> {
@@ -119,3 +107,20 @@ public class MainActivity extends AppCompatActivity {
         Recette re = new Recette(json.get("title").getAsString(),json.get("image").getAsString(),json.get("readyInMinutes").getAsInt());
         recettes.add(re);
         }*/
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

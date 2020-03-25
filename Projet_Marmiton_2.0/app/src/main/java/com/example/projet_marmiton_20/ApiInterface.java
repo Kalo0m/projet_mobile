@@ -59,7 +59,6 @@ public class ApiInterface {
                             e.printStackTrace();
                         }
                     }
-
                     callback.onSuccess(recettes);
 
                 }else{
