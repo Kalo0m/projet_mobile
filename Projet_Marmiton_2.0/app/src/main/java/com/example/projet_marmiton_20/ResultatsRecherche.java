@@ -48,65 +48,57 @@ import java.util.List;
 
 public class ResultatsRecherche extends AppCompatActivity {
 
-    private static final String TAG = "APP";
+    ListView liste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultats_recherche);
-        //getSongList(n);
-    }
-    /*
-    public void getSongList(String n){
-        RequestQueue queue = VolleySingleton.getInstance(this).getRequestQueue();
-        ApiInterface request = new ApiInterface(queue,n);
+        liste = findViewById(R.id.listView);
+        ArrayList<Recette> recettes = getPersonnes("steak");
+        MyClassAdapter adapter = new MyClassAdapter(ResultatsRecherche.this,R.layout.activity_list_recette,recettes);
+        liste.setAdapter(adapter);
 
-        request.getRecetteList(new ApiInterface.ApiInterfaceApplication() {
-            @Override
-            public void onSuccess(ArrayList<Recette> songs) {
+    }
+    public static ArrayList<Recette> getPersonnes(String re) {
+
+        ArrayList<Recette> recettes = new ArrayList<Recette>();
+
+        try {
+            String myurl= "https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&?query="+re;
+
+            URL url = new URL(myurl);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            InputStream inputStream = connection.getInputStream();
+            /*
+             * InputStreamOperations est une classe complémentaire:
+             * Elle contient une méthode InputStreamToString.
+             */
+            String result = InputStreamOperations.InputStreamToString(inputStream);
+
+            // On récupère le JSON complet
+            JSONObject jsonObject = new JSONObject(result);
+            // On récupère le tableau d'objets qui nous concernent
+            JSONArray array = new JSONArray(jsonObject.getString("results"));
+            // Pour tous les objets on récupère les infos
+            for (int i = 0; i < array.length(); i++) {
+                // On récupère un objet JSON du tableau
+                JSONObject obj = new JSONObject(array.getString(i));
+                // On fait le lien Personne - Objet JSON
+                Recette personne = new Recette(obj.getString("title"),obj.getString("image"),obj.getInt("ReadyInMinutes"));
+                // On ajoute la personne à la liste
+                recettes.add(personne);
 
             }
 
-            @Override
-            public void onError(String message) {
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        // On retourne la liste des personnes
+        return recettes;
     }
 
-     */
-
-
-    class MyClassAdapter extends ArrayAdapter<Recette> {
-        LayoutInflater inflater;
-        public MyClassAdapter(Context context, int textViewResourceId, ListRecettes items) {
-            super(context, textViewResourceId ,items.getRecettes());
-            inflater = LayoutInflater.from(context);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            Recette recette = getItem(position);
-            View row = inflater.inflate(R.layout.activity_list_recette,parent,false);
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            TextView Titre = (TextView)row.findViewById(R.id.textView);
-            TextView Temps = (TextView)row.findViewById(R.id.textView2);
-            ImageView img = (ImageView) row.findViewById(R.id.imageView);
-            Titre.setText(recette.getNomRecette());
-            Temps.setText(recette.getTempPreparation());
-            return(row);
-        }
-    }
-
-
-
-
-    /*JsonArray array = (JsonArray) result.get("results");
-                        for(int i=0;i<array.size();i++){
-        JsonObject json = (JsonObject) array.get(i);
-        Recette re = new Recette(json.get("title").getAsString(),json.get("image").getAsString(),json.get("readyInMinutes").getAsInt());
-        recettes.add(re);
-        }*/
 
 }
 
