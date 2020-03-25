@@ -8,19 +8,46 @@ import android.widget.TextView;
 
 public class Recette extends AppCompatActivity {
 
-    TextView nomRecette;
-    ImageView imageRecette;
-    TextView tempPreparation;
-    TextView difficutle;
+    private String nomRecette;
+    private String imageRecette;
+    private int tempPreparation;
 
+    public Recette(String titre, String img, int tps){
+        this.nomRecette=titre;
+        this.imageRecette=img;
+        this.tempPreparation=tps;
+    }
+
+    public String getNomRecette() {
+        return nomRecette;
+    }
+
+    public void setNomRecette(String nomRecette) {
+        this.nomRecette = nomRecette;
+    }
+
+    public String getImageRecette() {
+        return imageRecette;
+    }
+
+    public void setImageRecette(String imageRecette) {
+        this.imageRecette = imageRecette;
+    }
+
+    public int getTempPreparation() {
+        return tempPreparation;
+    }
+
+    public void setTempPreparation(int tempPreparation) {
+        this.tempPreparation = tempPreparation;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recette);
-
-        nomRecette = findViewById(R.id.nomRecette);
-        imageRecette = findViewById(R.id.imageRecette);
-        tempPreparation = findViewById(R.id.tempPreparation);
+    public String toString() {
+        return "Recette{" +
+                "nomRecette='" + nomRecette + '\'' +
+                ", imageRecette='" + imageRecette + '\'' +
+                ", tempPreparation=" + tempPreparation +
+                '}';
     }
 }

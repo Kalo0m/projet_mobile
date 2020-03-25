@@ -14,7 +14,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="17dp"
         android:fontFamily="sans-serif"
-        android:text="Resultats pour: "
+        android:text="@string/resultats_pour"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
