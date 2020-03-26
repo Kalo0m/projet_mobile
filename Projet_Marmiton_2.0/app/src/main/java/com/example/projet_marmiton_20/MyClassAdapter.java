@@ -9,6 +9,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.squareup.picasso.Picasso;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -31,6 +36,7 @@ public class MyClassAdapter extends ArrayAdapter<Recette> {
         ImageView img = (ImageView) row.findViewById(R.id.imageView);
         titre.setText(recette.getNomRecette());
         temps.setText(recette.getTempPreparation()+"");
+        Picasso.get().load("https://spoonacular.com/recipeImages/"+recette.getImageRecette()).into(img);
         return(row);
     }
 
