@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -67,7 +68,7 @@ public class ResultatsRecherche extends AppCompatActivity {
         JsonObject json = new JsonObject();
         try {
             json = Ion.with(this)
-                .load("https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&?query="+i1.getStringExtra("nomRecette"))
+                .load("https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+i1.getStringExtra("nomRecette"))
                 .asJsonObject().get();
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -77,21 +78,25 @@ public class ResultatsRecherche extends AppCompatActivity {
         JsonArray array = json.getAsJsonArray("results");
         for(int i=0;i<array.size();i++){
             JsonObject j = array.get(i).getAsJsonObject();
-            Recette re = new Recette(j.get("title").getAsString(),j.get("image").getAsString(),j.get("readyInMinutes").getAsInt());
+            Recette re = new Recette(j.get("title").getAsString(),j.get("image").getAsString(),j.get("readyInMinutes").getAsInt(),j.get("id").toString());
             recettes.add(re);
         }
         MyClassAdapter adapter = new MyClassAdapter(this,R.layout.activity_list_recette,recettes);
         liste.setAdapter(adapter);
+        liste.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i1 = new Intent(ResultatsRecherche.this,Preparation.class);
+                Recette re = (Recette) parent.getItemAtPosition(position);
+                i1.putExtra("id",re.getId());
+                i1.putExtra("image",re.getImageRecette());
+                i1.putExtra("name",re.getNomRecette());
+                i1.putExtra("time",re.getTempPreparation());
 
+                startActivity(i1);
+            }
+        });
 
-
-
-        //MyClassAdapter adapter = new MyClassAdapter(ResultatsRecherche.this,R.layout.activity_list_recette,recettes);
-        //liste.setAdapter(adapter);
-        //JsonArray array = result.getAsJsonArray("results");
-        //for(int i=0;i<array.size();i++){
-        //    json[i]= (JsonObject) array.get(i);
-        //}
 
     }
 

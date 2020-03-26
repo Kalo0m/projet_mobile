@@ -13,6 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Recette"></activity>
         <activity android:name=".ResultatsRecherche" />
+        <activity android:name=".Preparation" />
         <activity android:name=".PageAcceuil">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

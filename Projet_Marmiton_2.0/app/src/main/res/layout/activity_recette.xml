@@ -10,8 +10,8 @@
         android:id="@+id/nomRecette"
         android:layout_width="221dp"
         android:layout_height="111dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="34dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="sans-serif"
         android:text="Recette"
@@ -25,10 +25,11 @@
 
     <ImageView
         android:id="@+id/imageRecette"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="34dp"
+        android:contentDescription="TODO"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
@@ -44,15 +45,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageRecette" />
 
     <TextView
-        android:id="@+id/difficulte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="Difficulté"
-        app:layout_constraintStart_toEndOf="@+id/tempPreparation"
-        app:layout_constraintTop_toTopOf="@+id/tempPreparation" />
-
-    <TextView
         android:id="@+id/recette"
         android:layout_width="378dp"
         android:layout_height="477dp"
@@ -60,5 +52,5 @@
         android:layout_marginTop="24dp"
         android:text="recette..."
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulte" />
+        app:layout_constraintTop_toBottomOf="@+id/tempPreparation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

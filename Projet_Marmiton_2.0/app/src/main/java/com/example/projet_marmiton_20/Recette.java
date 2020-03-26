@@ -11,11 +11,13 @@ public class Recette extends AppCompatActivity {
     private String nomRecette;
     private String imageRecette;
     private int tempPreparation;
+    private String id;
 
-    public Recette(String titre, String img, int tps){
+    public Recette(String titre, String img, int tps,String id){
         this.nomRecette=titre;
         this.imageRecette=img;
         this.tempPreparation=tps;
+        this.id=id;
     }
 
     public String getNomRecette() {
@@ -25,6 +27,11 @@ public class Recette extends AppCompatActivity {
     public void setNomRecette(String nomRecette) {
         this.nomRecette = nomRecette;
     }
+
+    public String getId(){
+        return this.id;
+    }
+
 
     public String getImageRecette() {
         return imageRecette;
