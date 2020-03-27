@@ -63,12 +63,14 @@ public class ResultatsRecherche extends AppCompatActivity {
         liste = findViewById(R.id.listView);
         txt = findViewById(R.id.resultat);
         Intent i1 = getIntent();
+        System.out.println(i1.getStringExtra("nombrePersonne"));
         txt.setText(i1.getStringExtra("nomRecette"));
         ArrayList<Recette> recettes = new ArrayList<>();
         JsonObject json = new JsonObject();
+        String uri = "https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+i1.getStringExtra("nomRecette")+"&cuisine="+i1.getStringExtra("genreRecette"+"&number=100");
         try {
             json = Ion.with(this)
-                .load("https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+i1.getStringExtra("nomRecette"))
+                .load(uri)
                 .asJsonObject().get();
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -78,8 +80,21 @@ public class ResultatsRecherche extends AppCompatActivity {
         JsonArray array = json.getAsJsonArray("results");
         for(int i=0;i<array.size();i++){
             JsonObject j = array.get(i).getAsJsonObject();
-            Recette re = new Recette(j.get("title").getAsString(),j.get("image").getAsString(),j.get("readyInMinutes").getAsInt(),j.get("id").toString());
-            recettes.add(re);
+            int z=1;
+            int b = i1.getIntExtra("nombrePersonne",z);
+            int a = j.get("servings").getAsInt();
+            if(j.get("image")==null) {
+                if(a==b){
+                    Recette re = new Recette(j.get("title").getAsString(),j.get("readyInMinutes").getAsInt(), j.get("id").toString());
+                    recettes.add(re);
+                }
+            }else{
+                if(a==b){
+                    Recette re = new Recette(j.get("title").getAsString(), j.get("image").getAsString(), j.get("readyInMinutes").getAsInt(), j.get("id").toString());
+                    recettes.add(re);
+                }
+            }
+
         }
         MyClassAdapter adapter = new MyClassAdapter(this,R.layout.activity_list_recette,recettes);
         liste.setAdapter(adapter);
@@ -92,7 +107,6 @@ public class ResultatsRecherche extends AppCompatActivity {
                 i1.putExtra("image",re.getImageRecette());
                 i1.putExtra("name",re.getNomRecette());
                 i1.putExtra("time",re.getTempPreparation());
-
                 startActivity(i1);
             }
         });

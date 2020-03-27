@@ -7,6 +7,19 @@
     tools:context=".Recette">
 
     <TextView
+        android:id="@+id/recette2"
+        android:layout_width="378dp"
+        android:layout_height="171dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginBottom="35dp"
+        android:scrollbars="vertical"
+        android:text="Ingredients"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recette" />
+
+    <TextView
         android:id="@+id/nomRecette"
         android:layout_width="221dp"
         android:layout_height="111dp"
@@ -29,7 +42,9 @@
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="34dp"
+        android:layout_marginBottom="36dp"
         android:contentDescription="TODO"
+        app:layout_constraintBottom_toTopOf="@+id/tempPreparation"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
@@ -40,17 +55,21 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="17dp"
         android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
         android:text="temp de préparation"
+        app:layout_constraintBottom_toTopOf="@+id/recette"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageRecette" />
 
     <TextView
         android:id="@+id/recette"
         android:layout_width="378dp"
-        android:layout_height="477dp"
-        android:layout_marginStart="16dp"
+        android:layout_height="171dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="24dp"
-        android:text="recette..."
+        android:layout_marginBottom="250dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tempPreparation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

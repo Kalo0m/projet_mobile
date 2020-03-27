@@ -63,28 +63,17 @@
         android:id="@+id/TextNombrePersonne"
         android:layout_width="212dp"
         android:layout_height="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="32dp"
         android:text="Nombre de personnes conviées:"
         app:layout_constraintStart_toStartOf="@+id/spinnerGenreRecette"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGenreRecette" />
-
-    <SeekBar
-        android:id="@+id/seekBarNombrePersonne"
-        style="@android:style/Widget.DeviceDefault.SeekBar"
-        android:layout_width="368dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="8dp"
-        android:progressTint="#E91E63"
-        app:layout_constraintStart_toStartOf="@+id/TextNombrePersonne"
-        app:layout_constraintTop_toBottomOf="@+id/TextNombrePersonne" />
 
     <Button
         android:id="@+id/buttonRechcercher"
         android:layout_width="368dp"
         android:layout_height="69dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="32dp"
         android:background="#2196F3"
         android:text="Rechercher !"
         android:textAlignment="center"
@@ -92,8 +81,14 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarNombrePersonne" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="370dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/TextNombrePersonne"
+        app:layout_constraintTop_toBottomOf="@+id/TextNombrePersonne" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

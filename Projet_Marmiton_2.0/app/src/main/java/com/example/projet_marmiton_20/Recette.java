@@ -20,6 +20,12 @@ public class Recette extends AppCompatActivity {
         this.id=id;
     }
 
+    public Recette(String titre, int tps, String id){
+        this.nomRecette=titre;
+        this.tempPreparation=tps;
+        this.id=id;
+    }
+
     public String getNomRecette() {
         return nomRecette;
     }
