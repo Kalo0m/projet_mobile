@@ -14,10 +14,10 @@
         android:layout_marginTop="43dp"
         android:layout_marginBottom="35dp"
         android:scrollbars="vertical"
-        android:text="Ingredients"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recette" />
+        app:layout_constraintTop_toBottomOf="@+id/recette"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/nomRecette"
@@ -56,7 +56,6 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="24dp"
         android:layout_marginBottom="24dp"
-        android:text="temp de préparation"
         app:layout_constraintBottom_toTopOf="@+id/recette"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageRecette" />

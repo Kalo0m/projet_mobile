@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
@@ -42,7 +43,8 @@ public class Preparation extends AppCompatActivity {
         Picasso.get().load("https://spoonacular.com/recipeImages/" + getIntent().getStringExtra("image")).into(image);
         name.setText(getIntent().getStringExtra("name"));
         int a = 0;
-        temps.setText("" + getIntent().getIntExtra("time", a) + "min");
+        String tps = getIntent().getIntExtra("time", a) + "min, for "+getIntent().getIntExtra("nbpers",1)+" servings";
+        temps.setText(tps);
         JsonArray json = new JsonArray();
         try {
             json = Ion.with(this)
@@ -55,10 +57,14 @@ public class Preparation extends AppCompatActivity {
         }
         for (int i = 0; i < json.size(); i++) {
             JsonObject js = (JsonObject) json.get(i);
-            preparation.append(js.get("name") + "\n" + "\n");
+            String name = js.get("name").toString();
+            name = name.replaceAll("\"","");
+            preparation.append(name + "\n" + "\n");
             JsonArray ar = (JsonArray) js.get("steps");
             JsonObject step = (JsonObject) ar.get(i);
-            preparation.append(step.get("step") + "\n" + "\n");
+            String stepstring = step.get("step").toString();
+            stepstring = stepstring.replaceAll("\"","");
+            preparation.append(stepstring + "\n" + "\n");
         }
 
 
@@ -78,7 +84,16 @@ public class Preparation extends AppCompatActivity {
         JsonObject js = (JsonObject) ar.get(k);
         JsonObject j = (JsonObject) js.get("amount");
         JsonObject s = (JsonObject) j.get("metric");
-        ingred.append(js.get("name")+" :" + s.get("value")+" "+s.get("unit")+"\n");
+        DecimalFormat dt = new DecimalFormat("0.00");
+        double value = s.get("value").getAsDouble();
+        double nbpers = getIntent().getIntExtra("nbpers",1);
+        double persrecette = getIntent().getIntExtra("persrecette",1);
+        double quantity = (value*nbpers)/persrecette;
+        String name = js.get("name").toString();
+        name = name.replaceAll( "\"" ,"");
+        String unit = s.get("unit").toString();
+        unit = unit.replaceAll("\"","");
+        ingred.append(name+" : " + dt.format(quantity) +" "+unit+"\n");
     }
 
 }

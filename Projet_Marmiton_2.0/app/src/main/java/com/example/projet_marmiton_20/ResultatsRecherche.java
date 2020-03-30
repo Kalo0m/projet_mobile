@@ -63,12 +63,18 @@ public class ResultatsRecherche extends AppCompatActivity {
         liste = findViewById(R.id.listView);
         txt = findViewById(R.id.resultat);
         Intent i1 = getIntent();
-        System.out.println(i1.getStringExtra("nombrePersonne"));
-        txt.setText(i1.getStringExtra("nomRecette"));
+        String nb = i1.getIntExtra("nombrePersonne",1)+"";
+        String recherche = i1.getStringExtra("nomRecette")+" for "+nb+" servings";
+        txt.setText(recherche);
         ArrayList<Recette> recettes = new ArrayList<>();
         JsonObject json = new JsonObject();
-        String uri = "https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+i1.getStringExtra("nomRecette")+"&cuisine="+i1.getStringExtra("genreRecette"+"&number=100");
-        try {
+
+        String nameRecette = i1.getStringExtra("nomRecette");
+        String genreRecette = i1.getStringExtra("genreRecette");
+
+
+        String uri = "https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+nameRecette+"&cuisine="+genreRecette+"&number=100";
+try {
             json = Ion.with(this)
                 .load(uri)
                 .asJsonObject().get();
@@ -81,18 +87,12 @@ public class ResultatsRecherche extends AppCompatActivity {
         for(int i=0;i<array.size();i++){
             JsonObject j = array.get(i).getAsJsonObject();
             int z=1;
-            int b = i1.getIntExtra("nombrePersonne",z);
-            int a = j.get("servings").getAsInt();
             if(j.get("image")==null) {
-                if(a==b){
-                    Recette re = new Recette(j.get("title").getAsString(),j.get("readyInMinutes").getAsInt(), j.get("id").toString());
+                    Recette re = new Recette(j.get("title").getAsString(),j.get("readyInMinutes").getAsInt(), j.get("id").toString(),i1.getIntExtra("nombrePersonne",z),j.get("servings").getAsInt());
                     recettes.add(re);
-                }
             }else{
-                if(a==b){
-                    Recette re = new Recette(j.get("title").getAsString(), j.get("image").getAsString(), j.get("readyInMinutes").getAsInt(), j.get("id").toString());
+                    Recette re = new Recette(j.get("title").getAsString(), j.get("image").getAsString(), j.get("readyInMinutes").getAsInt(), j.get("id").toString(),i1.getIntExtra("nombrePersonne",z),j.get("servings").getAsInt());
                     recettes.add(re);
-                }
             }
 
         }
@@ -107,6 +107,8 @@ public class ResultatsRecherche extends AppCompatActivity {
                 i1.putExtra("image",re.getImageRecette());
                 i1.putExtra("name",re.getNomRecette());
                 i1.putExtra("time",re.getTempPreparation());
+                i1.putExtra("nbpers",re.getnbpers());
+                i1.putExtra("persrecette",re.getPersrecette());
                 startActivity(i1);
             }
         });

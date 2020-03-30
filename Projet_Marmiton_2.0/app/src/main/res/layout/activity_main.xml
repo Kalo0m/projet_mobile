@@ -2,21 +2,24 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".PageAcceuil">
 
     <TextView
         android:id="@+id/Recette"
         android:layout_width="377dp"
-        android:layout_height="37dp"
+        android:layout_height="47dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="17dp"
         android:fontFamily="sans-serif"
-        android:text="Recette"
+        android:text="Marmiton"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#FF9800"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +32,9 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:shadowColor="#FF9800"
+        android:textColorHighlight="#FF9800"
+        android:textColorLink="#FF9800"
         app:layout_constraintStart_toStartOf="@+id/TextNomRecette"
         app:layout_constraintTop_toBottomOf="@+id/TextNomRecette" />
 
@@ -37,7 +43,7 @@
         android:layout_width="213dp"
         android:layout_height="24dp"
         android:layout_marginTop="98dp"
-        android:text="Nom de la recette recehrché:"
+        android:text="Name of the recipes :"
         android:textAlignment="textStart"
         app:layout_constraintStart_toStartOf="@+id/Recette"
         app:layout_constraintTop_toBottomOf="@+id/Recette" />
@@ -47,7 +53,7 @@
         android:layout_width="210dp"
         android:layout_height="28dp"
         android:layout_marginTop="64dp"
-        android:text="Genre de la recette:"
+        android:text="The cuisine of the recipes : "
         app:layout_constraintStart_toStartOf="@+id/nomRecette"
         app:layout_constraintTop_toBottomOf="@+id/nomRecette" />
 
@@ -64,7 +70,7 @@
         android:layout_width="212dp"
         android:layout_height="32dp"
         android:layout_marginTop="32dp"
-        android:text="Nombre de personnes conviées:"
+        android:text="Servings : "
         app:layout_constraintStart_toStartOf="@+id/spinnerGenreRecette"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGenreRecette" />
 
@@ -74,10 +80,10 @@
         android:layout_height="69dp"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="32dp"
-        android:background="#2196F3"
-        android:text="Rechercher !"
+        android:background="#FF9800"
+        android:text="Search !"
         android:textAlignment="center"
-        android:textColor="#FFC107"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

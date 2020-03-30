@@ -12,18 +12,32 @@ public class Recette extends AppCompatActivity {
     private String imageRecette;
     private int tempPreparation;
     private String id;
+    private int nbpers;
+    private int persrecette;
 
-    public Recette(String titre, String img, int tps,String id){
+    public Recette(String titre, String img, int tps,String id, int nbpers, int persrecette){
         this.nomRecette=titre;
         this.imageRecette=img;
         this.tempPreparation=tps;
         this.id=id;
+        this.nbpers=nbpers;
+        this.persrecette=persrecette;
     }
 
-    public Recette(String titre, int tps, String id){
+    public Recette(String titre, int tps, String id, int nbpers, int persrecette){
         this.nomRecette=titre;
         this.tempPreparation=tps;
         this.id=id;
+        this.nbpers=nbpers;
+        this.persrecette=persrecette;
+    }
+
+    public int getnbpers(){
+        return this.nbpers;
+    }
+
+    public int getPersrecette(){
+        return this.persrecette;
     }
 
     public String getNomRecette() {

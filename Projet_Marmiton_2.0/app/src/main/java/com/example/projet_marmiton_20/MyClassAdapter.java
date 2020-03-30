@@ -35,7 +35,7 @@ public class MyClassAdapter extends ArrayAdapter<Recette> {
         TextView temps = (TextView)row.findViewById(R.id.textView2);
         ImageView img = (ImageView) row.findViewById(R.id.imageView);
         titre.setText(recette.getNomRecette());
-        temps.setText(recette.getTempPreparation()+"");
+        temps.setText(recette.getTempPreparation()+" min");
         Picasso.get().load("https://spoonacular.com/recipeImages/"+recette.getImageRecette()).into(img);
         return(row);
     }
