@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class MyClassAdapter extends ArrayAdapter<Recette> {
@@ -35,7 +36,7 @@ public class MyClassAdapter extends ArrayAdapter<Recette> {
         TextView temps = (TextView)row.findViewById(R.id.textView2);
         ImageView img = (ImageView) row.findViewById(R.id.imageView);
         titre.setText(recette.getNomRecette());
-        temps.setText(recette.getTempPreparation()+" min");
+        temps.setText(recette.getTempPreparation()/60+" h "+ recette.getTempPreparation()%60 +" min");
         Picasso.get().load("https://spoonacular.com/recipeImages/"+recette.getImageRecette()).into(img);
         return(row);
     }
