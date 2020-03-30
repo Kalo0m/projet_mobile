@@ -66,15 +66,17 @@ public class ResultatsRecherche extends AppCompatActivity {
         String nb = i1.getIntExtra("nombrePersonne",1)+"";
         String recherche = i1.getStringExtra("nomRecette")+" for "+nb+" servings";
         txt.setText(recherche);
-        ArrayList<Recette> recettes = new ArrayList<>();
-        JsonObject json = new JsonObject();
+
+
 
         String nameRecette = i1.getStringExtra("nomRecette");
+        nameRecette = nameRecette.replace(" ","_");
         String genreRecette = i1.getStringExtra("genreRecette");
 
 
         String uri = "https://api.spoonacular.com/recipes/search?apiKey=806171bec5aa4d00be74d2304fb7c6fb&query="+nameRecette+"&cuisine="+genreRecette+"&number=100";
-try {
+        JsonObject json = new JsonObject();
+        try {
             json = Ion.with(this)
                 .load(uri)
                 .asJsonObject().get();
@@ -83,6 +85,7 @@ try {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        ArrayList<Recette> recettes = new ArrayList<>();
         JsonArray array = json.getAsJsonArray("results");
         for(int i=0;i<array.size();i++){
             JsonObject j = array.get(i).getAsJsonObject();
