@@ -27,6 +27,7 @@
 
     <EditText
         android:id="@+id/nomRecette"
+        android:background="@drawable/custom_edittext"
         android:layout_width="370dp"
         android:layout_height="41dp"
         android:layout_marginTop="8dp"
@@ -42,9 +43,12 @@
         android:id="@+id/TextNomRecette"
         android:layout_width="213dp"
         android:layout_height="24dp"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="45dp"
         android:text="Name of the recipes :"
         android:textAlignment="textStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#6F6973"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/Recette"
         app:layout_constraintTop_toBottomOf="@+id/Recette" />
 
@@ -52,15 +56,19 @@
         android:id="@+id/TextGenreRecette"
         android:layout_width="210dp"
         android:layout_height="28dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="30dp"
         android:text="The cuisine of the recipes : "
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#6F6973"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/nomRecette"
         app:layout_constraintTop_toBottomOf="@+id/nomRecette" />
 
     <Spinner
         android:id="@+id/spinnerGenreRecette"
+        android:background="@drawable/custom_edittext"
         android:layout_width="370dp"
-        android:layout_height="39dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/TextGenreRecette"
         app:layout_constraintTop_toBottomOf="@+id/TextGenreRecette" />
@@ -69,18 +77,22 @@
         android:id="@+id/TextNombrePersonne"
         android:layout_width="212dp"
         android:layout_height="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:text="Servings : "
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="#6F6973"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/spinnerGenreRecette"
         app:layout_constraintTop_toBottomOf="@+id/spinnerGenreRecette" />
 
     <Button
         android:id="@+id/buttonRechcercher"
+        style="@android:style/Widget.Button"
         android:layout_width="368dp"
         android:layout_height="69dp"
         android:layout_marginEnd="21dp"
         android:layout_marginBottom="32dp"
-        android:background="#FF9800"
+        android:background="@drawable/custom_button"
         android:text="Search !"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
@@ -91,8 +103,9 @@
 
     <Spinner
         android:id="@+id/spinner"
+        android:background="@drawable/custom_edittext"
         android:layout_width="370dp"
-        android:layout_height="25dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@+id/TextNombrePersonne"
         app:layout_constraintTop_toBottomOf="@+id/TextNombrePersonne" />
